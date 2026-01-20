@@ -58,3 +58,26 @@ slider.addEventListener("mouseleave", startAutoPlay);
 showSlide(currentIndex);
 startAutoPlay();
 
+// TOP PROGRESS BAR
+window.addEventListener('scroll', () => {
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
+
+    // Calculate scroll percentage (0-100%)
+    const scrolled = (window.scrollY /
+        (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+    // Update progress bar width smoothly
+    progressBar.style.width = Math.min(scrolled, 100) + '%';
+}, { passive: true });
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        progressBar.style.width = '0%';
+    }
+});
+
+
+
